@@ -12,12 +12,24 @@ startButton.addEventListener('click', (e) => {
 
 let phrases = ['Apples are red', 'Bananas are yellow', 'Oranges are orange', 'Grapes are green or purple', 'Strawberries are red'];
 
-
 function getRandomPhraseAsArray(arr){
     const randomArrayItem = arr[Math.floor(Math.random() * arr.length)];
     const characters = randomArrayItem.split('');
     return characters;
-    
-} 
+}
 
-getRandomPhraseAsArray(phrases);
+const hej = getRandomPhraseAsArray(phrases);
+
+// Create an addPhraseToDisplay function that loops through an array of characters.
+
+function addPhraseToDisplay(arr){
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        const createLi = document.createElement("li");
+        createLi.textContent = element; 
+        const ul = phrase.querySelector('ul');
+        ul.appendChild(createLi);
+    }
+}
+
+addPhraseToDisplay(hej);
