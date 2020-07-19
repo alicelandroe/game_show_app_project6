@@ -18,7 +18,8 @@ function getRandomPhraseAsArray(arr){
     return characters;
 }
 
-const hej = getRandomPhraseAsArray(phrases);
+const phraseArray = getRandomPhraseAsArray(phrases);
+
 
 // Create an addPhraseToDisplay function that loops through an array of characters.
 
@@ -27,9 +28,12 @@ function addPhraseToDisplay(arr){
         const element = arr[i];
         const createLi = document.createElement("li");
         createLi.textContent = element; 
+        if (element !== ' ') {
+            createLi.className = 'letter';
+        }
         const ul = phrase.querySelector('ul');
         ul.appendChild(createLi);
     }
 }
 
-addPhraseToDisplay(hej);
+addPhrasetoDisplay(phraseArray);
