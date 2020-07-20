@@ -87,9 +87,24 @@ function checkWin() {
         overlay.style.display = '';
         overlay.className = 'win';
         endTitle.textContent = 'You won! Yay!';
+        // extra credit: add button to success screen 
+        startButton.textContent = 'Reset game';
     } else if (missed >= 5) {
         overlay.style.display = '';
         overlay.className = 'lose';
         endTitle.textContent = "you lost :( Wanna try again? ";
+        startButton.textContent = 'Reset game';
     }
 }
+
+startButton.addEventListener('click', (e) => {
+    const overlay = document.querySelector('#overlay');
+    overlay.style.display = 'none';
+    const keyboardButtons= qwerty.querySelectorAll('BUTTON');
+    for (let i = 0; i < keyboardButtons.length; i++) {
+        const element = keyboardButtons[i];
+        element.className = '';
+    }
+})
+
+// Add a button to the “success” and “failure” screens that reset the game. You’ll have to recreate the buttons in the keyboard, generate a new random phrase, and set the number of misses to zero.
