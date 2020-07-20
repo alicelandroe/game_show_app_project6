@@ -43,25 +43,14 @@ addPhraseToDisplay(phraseArray);
 
 // STEP 6: Create a checkLetter function.
 
-// // elements with a class of “letter” (remember that we added the letter class to 
-// all of the letters and none of the spaces when we made the game display). 
-
-// The function should loop over the letters and check if they match the letter in the button the player has chosen.
-
-// If there’s a match, the function should add the “show” class to the list item containing that letter, 
-// store the matching letter inside of a variable, and return that letter.
-
-// If a match wasn’t found, the function should return null.
-
 function checkLetter(button){
     const li = phrase.querySelectorAll('.letter');
     for (let i = 0; i < li.length; i++) {
         const letter = li[i].textContent;
         if (letter === button) {
             let letterShown = li[i].className = 'show';
-            return letterShown;
-        } else {
-            return null;
+            return letter;
         }
     }
+    return null;
 }
