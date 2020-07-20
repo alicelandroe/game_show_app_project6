@@ -44,15 +44,16 @@ addPhraseToDisplay(phraseArray);
 // STEP 6: Create a checkLetter function.
 
 function checkLetter(button){
-    const li = phrase.querySelectorAll('.letter');
-    for (let i = 0; i < li.length; i++) {
-        const letter = li[i].textContent;
-        if (letter === button) {
-            let letterShown = li[i].className = 'show';
-            return letter;
+    const letterElements = phrase.querySelectorAll('.letter');
+    let correctLetter = null; // if the letter guessed isn't in the phrase, the variable is null. If the letter IS included in the phrase, the variable consists of that letter
+    for (let i = 0; i < letterElements.length; i++) {
+        const letter = letterElements[i].textContent;
+        if (letter.toLowerCase() === button.toLowerCase()) {
+            letterElements[i].className = 'letter show'; 
+            correctLetter = letter;
         }
     }
-    return null;
+    return correctLetter;
 }
 
 // STEP 7: Add an event listener to the keyboard.
@@ -69,16 +70,23 @@ qwerty.addEventListener('click', (e) => {
         const tries = ol.querySelector('.tries');
         ol.removeChild(tries);
     }
+    checkWin();
 });
 
-// // Create a checkWin function.
-
-// Each time the player guesses a letter, this function will check whether the game has been won or lost. 
-
-// At the very end of the keyboard event listener, you’ll run this function to check if the number of letters with class “show” is equal to the number of letters with class “letters”. 
-// If they’re equal, show the overlay screen with the “win” class and appropriate text. 
-// Otherwise, if the number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text.
+// STEP 9: Create a checkWin function.
 
 function checkWin() {
-    
+    const lettersWithClassShow = document.querySelectorAll('.show');
+    const lettersWithClassLetters = document.querySelectorAll('.letter');
+    const overlay = document.querySelector('#overlay');
+    const endTitle = document.querySelector('.title');
+    if (lettersWithClassShow.length === lettersWithClassLetters.length) {
+        overlay.style.display = '';
+        overlay.className = 'win';
+        endTitle.textContent = 'You won! Yay!';
+    } else if (missed >= 5) {
+        overlay.style.display = '';
+        overlay.className = 'lose';
+        endTitle.textContent = "you lost :( Wanna try again? ";
+    }
 }
