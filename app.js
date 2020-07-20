@@ -54,3 +54,12 @@ function checkLetter(button){
     }
     return null;
 }
+
+// STEP 7: Add an event listener to the keyboard.
+
+qwerty.addEventListener('click', (e) => {
+    e.target.className = 'chosen';
+    e.target.disabled = true;
+    let buttonLetter = e.target.textContent;
+    let letterFound = checkLetter(buttonLetter);
+});
