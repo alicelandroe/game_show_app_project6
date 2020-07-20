@@ -60,6 +60,9 @@ function checkLetter(button){
 // STEP 8: Count the missed guesses in the game.
 
 qwerty.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'BUTTON') {
+        return;
+    }
     e.target.className = 'chosen';
     e.target.disabled = true;
     let buttonLetter = e.target.textContent;
