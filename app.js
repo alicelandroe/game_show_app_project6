@@ -56,10 +56,29 @@ function checkLetter(button){
 }
 
 // STEP 7: Add an event listener to the keyboard.
+// STEP 8: Count the missed guesses in the game.
 
 qwerty.addEventListener('click', (e) => {
     e.target.className = 'chosen';
     e.target.disabled = true;
     let buttonLetter = e.target.textContent;
     let letterFound = checkLetter(buttonLetter);
+    if (letterFound === null) {
+        missed += 1;
+        const ol = document.querySelector('#scoreboard').firstElementChild;
+        const tries = ol.querySelector('.tries');
+        ol.removeChild(tries);
+    }
 });
+
+// // Create a checkWin function.
+
+// Each time the player guesses a letter, this function will check whether the game has been won or lost. 
+
+// At the very end of the keyboard event listener, you’ll run this function to check if the number of letters with class “show” is equal to the number of letters with class “letters”. 
+// If they’re equal, show the overlay screen with the “win” class and appropriate text. 
+// Otherwise, if the number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text.
+
+function checkWin() {
+    
+}
