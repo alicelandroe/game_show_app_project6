@@ -12,7 +12,7 @@ startButton.addEventListener('click', (e) => {
 })
 
 // STEP 3: Create a phrases array that contains at least 5 different phrases as strings.
-let phrases = ['Apples are red', 'Bananas are yellow', 'Oranges are orange', 'Grapes are green or purple', 'Strawberries are red'];
+let phrases = ['Roses are red', 'Smoothies are yummy', 'You are cute', 'Save the bees', 'Blueberries are surprisingly blue'];
 
 // STEP 4: Create a getRandomPhraseAsArray function.
 function getRandomPhraseAsArray(arr){
@@ -104,7 +104,31 @@ startButton.addEventListener('click', (e) => {
     for (let i = 0; i < keyboardButtons.length; i++) {
         const element = keyboardButtons[i];
         element.className = '';
+        element.disabled = false;
+    }
+    if (startButton.textContent === 'Reset game') {
+        // remove the previous game's phrase 
+        const existingUl = phrase.firstElementChild;
+        existingUl.innerHTML = '';
+        // generate a new phrase
+        let newPhrase = getRandomPhraseAsArray(phrases);
+        // display the new phrase 
+        addPhraseToDisplay(newPhrase);
+        // reset the number of hearts/tries
+        missed = 0;
+        const ol = document.querySelector('#scoreboard').firstElementChild;
+        ol.innerHTML = '';
+        for (let i = 0; i <= 4; i++) {
+            const li = document.createElement('li');
+            li.className = 'tries';
+            const img = document.createElement('img');
+            img.src = 'images/liveHeart.png';
+            img.height = 35;
+            img.width = 30;
+            li.appendChild(img);
+            ol.appendChild(li);
+        }
     }
 })
 
-// Add a button to the “success” and “failure” screens that reset the game. You’ll have to recreate the buttons in the keyboard, generate a new random phrase, and set the number of misses to zero.
+// // Add a button to the “success” and “failure” screens that reset the game. You’ll have to recreate the buttons in the keyboard, generate a new random phrase, and set the number of misses to zero.
