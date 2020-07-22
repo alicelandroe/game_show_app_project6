@@ -12,7 +12,7 @@ startButton.addEventListener('click', (e) => {
 })
 
 // STEP 3: Create a phrases array that contains at least 5 different phrases as strings.
-let phrases = ['Roses are red', 'Smoothies are yummy', 'You are cute', 'Save the bees', 'Blueberries are surprisingly blue'];
+let phrases = ['Roses are red', 'Smoothies are yummy', 'You are cute', 'Save the bees', 'Sunny days are nice'];
 
 // STEP 4: Create a getRandomPhraseAsArray function.
 function getRandomPhraseAsArray(arr){
@@ -33,6 +33,8 @@ function addPhraseToDisplay(arr){
         createLi.textContent = element; 
         if (element !== ' ') {
             createLi.className = 'letter';
+        } else {
+            createLi.className = 'space';
         }
         const ul = phrase.querySelector('ul');
         ul.appendChild(createLi);
